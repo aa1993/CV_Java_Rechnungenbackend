@@ -1,5 +1,6 @@
 package de.Rechnungen.Rechnungenbackend;
 
+import de.Rechnungen.Rechnungenbackend.Kunde.Kunde;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +19,18 @@ public class RechnungenbackendApplication {
 	}
 
 	@GetMapping
-	public List<String> hello(){
-		return List.of("hello", "world");
+	public List<Kunde> hello(){
+		return List.of(
+				new Kunde(
+						1L,
+						"Max",
+						"Mustermann",
+						"Musterstraße",
+						4,
+						11111,
+						"Musterstadt"
+				)
+		);
 	}
 
 }
