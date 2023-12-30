@@ -71,11 +71,11 @@ public class Kunde {
         this.hausnummer = hausnummer;
     }
 
-    public int getpLZ() {
+    public int getPLZ() {
         return pLZ;
     }
 
-    public void setpLZ(int pLZ) {
+    public void setPLZ(int pLZ) {
         this.pLZ = pLZ;
     }
 

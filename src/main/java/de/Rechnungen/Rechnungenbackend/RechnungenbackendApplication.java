@@ -10,27 +10,12 @@ import java.util.List;
 
 
 @SpringBootApplication
-@RestController
+
 public class RechnungenbackendApplication {
 
 
 	public static void main(String[] args) {
 		SpringApplication.run(RechnungenbackendApplication.class, args);
-	}
-
-	@GetMapping
-	public List<Kunde> hello(){
-		return List.of(
-				new Kunde(
-						1L,
-						"Max",
-						"Mustermann",
-						"Musterstraße",
-						4,
-						11111,
-						"Musterstadt"
-				)
-		);
 	}
 
 }
