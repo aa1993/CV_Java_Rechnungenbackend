@@ -1,7 +1,9 @@
 package de.Rechnungen.Rechnungenbackend.Kunde;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -10,19 +12,15 @@ import java.util.List;
 @RequestMapping(path = "api/v1/kunde")
 public class KundeController {
 
+private final KundeService kundeService;
+
+@Autowired
+    public KundeController(KundeService kundeService) {
+        this.kundeService = kundeService;
+    }
 
     @GetMapping
-    public List<Kunde> getKunden(){
-        return List.of(
-                new Kunde(
-                        1L,
-                        "Max",
-                        "Mustermann",
-                        "Musterstraße",
-                        4,
-                        11111,
-                        "Musterstadt"
-                )
-        );
+    public @ResponseBody Iterable<Kunde> getKunden(){
+        return kundeService.getKunden();
     }
 }

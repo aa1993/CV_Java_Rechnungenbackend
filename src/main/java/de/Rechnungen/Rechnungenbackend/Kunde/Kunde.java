@@ -1,6 +1,12 @@
 package de.Rechnungen.Rechnungenbackend.Kunde;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "\"Kunde\"")
 public class Kunde {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long kundennummer;
     private String vorname;
     private String nachname;
