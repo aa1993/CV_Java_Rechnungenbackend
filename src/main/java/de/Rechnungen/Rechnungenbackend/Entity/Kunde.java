@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "\"Kunde\"")
 public class Kunde {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+ //   @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "Kundennummer", unique = true, nullable = false)
     private long kundennummer;
     @Column(name = "Vorname", nullable = false)

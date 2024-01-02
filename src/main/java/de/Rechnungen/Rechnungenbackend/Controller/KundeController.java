@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "api/v1/kunde")
+@RequestMapping(path = "api/v1/kunde/")
 public class KundeController {
 
 private final KundeService kundeService;
@@ -21,16 +21,19 @@ private final KundeService kundeService;
         return kundeService.getKunden();
     }
 
-    @GetMapping(path = "/{kundennummer}")
+    @GetMapping(path = "{kundennummer}")
     public @ResponseBody Kunde getKundeById(@PathVariable("kundennummer") long kundennummer){
         return kundeService.getKundeById(kundennummer);
     }
 
-    /*
-    @GetMapping(path = "/")
-    public @ResponseBody Iterable<KundeKauftProduktInRechnung> getFullKunden(){
-        return kundeService.getFullKunde();
+    @PostMapping
+    public void addKunde(@RequestBody Kunde kunde){
+        kundeService.addKunde(kunde);
     }
-    */
 
+
+    @DeleteMapping(path = "{kundennummer}")
+    public void deleteKunde(@PathVariable("kundennummer") long kundennummer){
+        kundeService.deleteKunde(kundennummer);
+    }
 }

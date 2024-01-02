@@ -36,4 +36,13 @@ public class KundeService {
         throw new NoSuchElementException("Kein Kunde mit der Kundennummer " + kundennummer + " vorhanden!");
     }
 
+    public void addKunde(Kunde kunde){
+        kundeRepository.save(kunde);
+    }
+
+    public void deleteKunde(long kundennummer) {
+        if(kundeRepository.existsById(kundennummer))
+            kundeRepository.deleteById(kundennummer);
+        else throw new NoSuchElementException("Kunde mit der Kundennummer "+ kundennummer+" ist nicht vorhanden.");
+    }
 }
