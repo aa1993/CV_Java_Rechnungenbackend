@@ -1,6 +1,5 @@
 package de.Rechnungen.Rechnungenbackend.Controller;
 
-import de.Rechnungen.Rechnungenbackend.Entity.Custom.KundeKauftProduktInRechnung;
 import de.Rechnungen.Rechnungenbackend.Entity.Kunde;
 import de.Rechnungen.Rechnungenbackend.Service.KundeService;
 import org.springframework.beans.factory.annotation.Autowired;

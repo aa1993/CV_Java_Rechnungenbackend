@@ -5,4 +5,5 @@ public interface Rechnungseintrag {
     String getProduktname();
     double getPreis();
     int getAnzahl();
+    double getGesamtpreis();
 }

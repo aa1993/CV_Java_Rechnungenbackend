@@ -1,7 +1,5 @@
 package de.Rechnungen.Rechnungenbackend.Service;
 
-import de.Rechnungen.Rechnungenbackend.Entity.Custom.KundeKauftProduktInRechnung;
-import de.Rechnungen.Rechnungenbackend.Entity.Custom.Rechnungseintrag;
 import de.Rechnungen.Rechnungenbackend.Entity.Kunde;
 import de.Rechnungen.Rechnungenbackend.Entity.Rechnung;
 import de.Rechnungen.Rechnungenbackend.Repository.CustomQueryRepo;
@@ -36,11 +34,6 @@ public class KundeService {
         if(kundeOptional.isPresent())
             return kundeOptional.get();
         throw new NoSuchElementException("Kein Kunde mit der Kundennummer " + kundennummer + " vorhanden!");
-    }
-    public Iterable<KundeKauftProduktInRechnung> getFullKunde(){return customQueryRepo.getKundeKauftProduktInRechnung();}
-
-    public Iterable<Rechnungseintrag> getRechnungseintrageVonRechnungsnummer(long rechnungsnummer){
-        return customQueryRepo.getRechnungsliste(rechnungsnummer);
     }
 
     public Iterable<Rechnung> getRechnungen(){
