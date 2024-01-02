@@ -36,14 +36,4 @@ public class KundeService {
         throw new NoSuchElementException("Kein Kunde mit der Kundennummer " + kundennummer + " vorhanden!");
     }
 
-    public Iterable<Rechnung> getRechnungen(){
-        return rechnungRepository.findAll();
-    }
-
-    public Rechnung getRechnungVonRechnungsnummer(long rechnungsnummer){
-        Optional<Rechnung> rechnungOptional = rechnungRepository.findById(rechnungsnummer);
-        if(rechnungOptional.isPresent())
-            return rechnungOptional.get();
-        throw new NoSuchElementException("Kein Rechnung mit der Rechnngsnnummer " + rechnungsnummer + " vorhanden!");
-    }
 }

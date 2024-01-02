@@ -3,28 +3,29 @@ package de.Rechnungen.Rechnungenbackend.Controller;
 import de.Rechnungen.Rechnungenbackend.Entity.Custom.Rechnungseintrag;
 import de.Rechnungen.Rechnungenbackend.Entity.Rechnung;
 import de.Rechnungen.Rechnungenbackend.Service.KundeService;
+import de.Rechnungen.Rechnungenbackend.Service.RechnungService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "api/v1/rechnung/")
 public class RechnungController {
-    private final KundeService kundeService;
+    private final RechnungService rechnungService;
 
     @Autowired
-
-    public RechnungController(KundeService kundeService) {
-        this.kundeService = kundeService;
+    public RechnungController(RechnungService rechnungService) {
+        this.rechnungService = rechnungService;
     }
+
 
     @GetMapping(path = "{rechnungsnummer}")
     public @ResponseBody Rechnung getRechnungVonRechnungsnummer(@PathVariable("rechnungsnummer") long rechnungsnummer){
-        return kundeService.getRechnungVonRechnungsnummer(rechnungsnummer);
+        return rechnungService.getRechnungVonRechnungsnummer(rechnungsnummer);
     }
 
 
     @GetMapping()
     public @ResponseBody Iterable<Rechnung> getRechnungen(){
-        return kundeService.getRechnungen();
+        return rechnungService.getRechnungen();
     }
 }
