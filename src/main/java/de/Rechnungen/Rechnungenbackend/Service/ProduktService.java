@@ -29,4 +29,17 @@ public class ProduktService {
             return produktOptional.get();
         throw new NoSuchElementException("Produkt mit der Artikelnummer " + artikelnummer + " nicht vorhanden!");
     }
+
+    public void addProdukt(Produkt produkt) {
+        if(produktRepository.findProduktByName(produkt.getProduktname()).isPresent())
+            throw new IllegalStateException("Der Produktname "+produkt.getProduktname()+" ist bereits vergeben.");
+        produktRepository.save(produkt);
+    }
+
+    public void deleteProduktById(long artikelnummer) {
+        if(produktRepository.existsById(artikelnummer))
+            produktRepository.deleteById(artikelnummer);
+        else
+            throw new NoSuchElementException("Produkt mit der Atrikelnummer "+artikelnummer+" ist nicht vorhanden!");
+    }
 }

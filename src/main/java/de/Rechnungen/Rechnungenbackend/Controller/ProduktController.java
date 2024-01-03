@@ -23,4 +23,14 @@ public class ProduktController {
     public Produkt getProduktVonArtikelnummer(@PathVariable("artikelnummer") long artikelnummer) {
         return produktService.getProduktVonArtikelnummer(artikelnummer);
     }
+
+    @PostMapping
+    public void addProdukt(@RequestBody Produkt produkt){
+        produktService.addProdukt(produkt);
+    }
+
+    @DeleteMapping(path = "{artikelnummer}")
+    public void deleteProduktById(@PathVariable("artikelnummer") long artikelnummer){
+        produktService.deleteProduktById(artikelnummer);
+    }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public class Rechnung {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "Rechnungsnummer", unique = true, nullable = false)
     private long rechnungsnummer;
     @Column(name = "Rechnungsdatum", nullable = false)
