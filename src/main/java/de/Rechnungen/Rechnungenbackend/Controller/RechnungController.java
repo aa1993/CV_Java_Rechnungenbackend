@@ -28,4 +28,14 @@ public class RechnungController {
     public @ResponseBody Iterable<Rechnung> getRechnungen(){
         return rechnungService.getRechnungen();
     }
+
+    @PostMapping
+    public void addRechnung(@RequestBody Rechnung rechnung){
+        rechnungService.addRechnung(rechnung);
+    }
+
+    @DeleteMapping(path = "{rechnungsnummer}")
+    public void deleteRechnungById(@PathVariable("rechnungsnummer") long rechnungsnummer){
+        rechnungService.deleteRechnungById(rechnungsnummer);
+    }
 }

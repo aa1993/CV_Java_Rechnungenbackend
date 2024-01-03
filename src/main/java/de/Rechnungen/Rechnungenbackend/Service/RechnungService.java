@@ -25,6 +25,19 @@ public class RechnungService {
         Optional<Rechnung> rechnungOptional = rechnungRepository.findById(rechnungsnummer);
         if(rechnungOptional.isPresent())
             return rechnungOptional.get();
-        throw new NoSuchElementException("Kein Rechnung mit der Rechnngsnnummer " + rechnungsnummer + " vorhanden!");
+        throw new NoSuchElementException("Keine Rechnung mit der Rechnngsnnummer " + rechnungsnummer + " vorhanden!");
+    }
+
+    public void addRechnung(Rechnung rechnung) {
+        if(rechnung.getRechnungsnummer()==0 && rechnung.getRechnungsdatum()!=null){
+            rechnungRepository.save(rechnung);
+        }
+    }
+
+    public void deleteRechnungById(long rechnungsnummer) {
+        if(rechnungRepository.existsById(rechnungsnummer))
+            rechnungRepository.deleteById(rechnungsnummer);
+        else
+            throw new NoSuchElementException("Keine Rechnung mit der Rechnungsnummer "+rechnungsnummer+" vorhanden!");
     }
 }
