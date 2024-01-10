@@ -20,10 +20,6 @@ public class Produkt {
     @Column(name = "preis", nullable = false)
     private double preis;
 
-    //@OneToMany(mappedBy = "produkt") //mappedBy variablename in der Kauft Klasse
-    //private List<Kauft> kauft;
-
-
     public Produkt() {
     }
 
@@ -62,15 +58,6 @@ public class Produkt {
     public void setPreis(double preis) {
         this.preis = preis;
     }
-
-    //@JsonIgnore
-    //public List<Kauft> getKauft() {
-    //    return kauft;
-    //}
-
-    //public void setKauft(List<Kauft> kauft) {
-    //    this.kauft = kauft;
-    //}
 
     @Override
     public String toString() {

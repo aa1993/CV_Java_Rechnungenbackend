@@ -26,10 +26,6 @@ public class Kunde {
     @Column(name = "ort", nullable = false)
     private String ort;
 
-
-    //@OneToMany(mappedBy = "kunde") //mappedBy variablename in der Kauft Klasse
-    //private List<Rechnung> rechnungen;
-
     public Kunde() {
     }
 
@@ -109,15 +105,6 @@ public class Kunde {
     public void setOrt(String ort) {
         this.ort = ort;
     }
-
-    //@JsonIgnore
-    //public List<Kauft> getKauft() {
-    //    return kauft;
-    //}
-
-    //public void setKauft(List<Kauft> kauft) {
-    //    this.kauft = kauft;
-    //}
 
     @Override
     public String toString() {

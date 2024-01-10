@@ -23,11 +23,6 @@ public class Rechnung {
 
     private LocalDate rechnungsdatum;
 
-    //@ManyToOne
-    //@JoinColumn(name = "kundennummer")
-    //private Kunde kunde ;
-
-
     public Rechnung() {
     }
 
@@ -41,19 +36,6 @@ public class Rechnung {
         this.kundennummer = kundennummer;
         this.rechnungsdatum = rechnungsdatum;
     }
-
-    /*public Rechnung(long rechnungsnummer, long kundennummer, LocalDate rechnungsdatum, Kunde kunde) {
-        this.rechnungsnummer = rechnungsnummer;
-        this.kundennummer = kundennummer;
-        this.rechnungsdatum = rechnungsdatum;
-        this.kunde = kunde;
-    }
-
-    public Rechnung(long kundennummer, LocalDate rechnungsdatum, Kunde kunde) {
-        this.kundennummer = kundennummer;
-        this.rechnungsdatum = rechnungsdatum;
-        this.kunde = kunde;
-    }*/
 
     public long getRechnungsnummer() {
         return rechnungsnummer;
@@ -78,24 +60,5 @@ public class Rechnung {
     public void setRechnungsdatum(LocalDate rechnungsdatum) {
         this.rechnungsdatum = rechnungsdatum;
     }
-
-    //@JsonBackReference
-    //public Kunde getKunde() {
-    //    return kunde;
-    //}
-
-    //public void setKunde(Kunde kunde) {
-    //    this.kunde = kunde;
-    //}
-
-    //@JsonIgnore
-    //public List<Kauft> getKauft() {
-    //    return kauft;
-    //}
-
-    //public void setKauft(List<Kauft> kauft) {
-    //    this.kauft = kauft;
-    //}
-
 
 }
