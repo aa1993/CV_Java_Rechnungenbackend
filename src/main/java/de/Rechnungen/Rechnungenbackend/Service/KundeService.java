@@ -15,15 +15,12 @@ import java.util.Optional;
 public class KundeService {
 
     private final KundeRepository kundeRepository;
-    private final CustomQueryRepo customQueryRepo;
-    private final RechnungRepository rechnungRepository;
 
     @Autowired
-    public KundeService(KundeRepository kundeRepository, CustomQueryRepo customQueryRepo, RechnungRepository rechnungRepository) {
+    public KundeService(KundeRepository kundeRepository) {
         this.kundeRepository = kundeRepository;
-        this.customQueryRepo = customQueryRepo;
-        this.rechnungRepository = rechnungRepository;
     }
+
 
     public Iterable<Kunde> getKunden(){
         return kundeRepository.findAll();

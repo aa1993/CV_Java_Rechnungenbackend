@@ -12,9 +12,10 @@ import java.util.List;
 @Repository
 public interface CustomQueryRepo extends JpaRepository<Rechnung, Long> {
 
-    @Query(value = "SELECT p.Artikelnummer AS artikelnummer, p.Produktname AS produktname, p.Preis AS preis, ka.Anzahl AS anzahl, (p.Preis*ka.Anzahl) AS gesamtpreis FROM  kauft AS ka INNER JOIN Produkt AS p ON p.Artikelnummer = ka.Artikelnummer WHERE ka.Rechnungsnummer = ?1", nativeQuery = true)
+    // Liste
+    @Query(value = "SELECT p.artikelnummer AS artikelnummer, p.produktname AS produktname, p.preis AS preis, e.anzahl AS anzahl, (p.preis*e.anzahl) AS gesamtpreis FROM  enthaelt AS e INNER JOIN Produkt AS p ON p.artikelnummer = e.artikelnummer WHERE e.rechnungsnummer = ?1", nativeQuery = true)
     List<Rechnungseintrag> getRechnungsliste(long Rechnungsnummer);
 
-    @Query(value = "SELECT SUM(p.Preis*ka.Anzahl) AS totalpreis FROM Produkt AS p INNER JOIN kauft AS ka ON p.Artikelnummer = ka.Artikelnummer WHERE ka.Rechnungsnummer = ?1 GROUP BY ka.Rechnungsnummer", nativeQuery = true)
+    @Query(value = "SELECT SUM(p.preis*e.anzahl) AS totalpreis FROM produkt AS p INNER JOIN enthaelt AS e ON p.Artikelnummer = e.Artikelnummer WHERE e.Rechnungsnummer = ?1 GROUP BY e.Rechnungsnummer", nativeQuery = true)
     List<Totalpreis> getTotalpreisVonRechnungsnummer(long Rechnungsnummer);
 }

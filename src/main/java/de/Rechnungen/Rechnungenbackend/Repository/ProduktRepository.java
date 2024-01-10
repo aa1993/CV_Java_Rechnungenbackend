@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface ProduktRepository extends CrudRepository<Produkt,Long> {
 
-    @Query(value = "SELECT * FROM Produkt AS p where p.Produktname=?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Produkt AS p where p.produktname=?1", nativeQuery = true)
     Optional<Produkt> findProduktByName(String produktname);
 }

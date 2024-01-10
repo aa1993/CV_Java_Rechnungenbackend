@@ -1,5 +1,6 @@
 package de.Rechnungen.Rechnungenbackend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -15,39 +16,55 @@ public class Rechnung {
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "Rechnungsnummer", unique = true, nullable = false)
     private long rechnungsnummer;
+    @Column(name = "kundennummer", nullable = false)
+    private long kundennummer;
+
     @Column(name = "Rechnungsdatum", nullable = false)
 
     private LocalDate rechnungsdatum;
 
-    @OneToMany(mappedBy = "rechnung") //mappedBy variablename in der Kauft Klasse
-    private List<Kauft> kauft;
+    //@ManyToOne
+    //@JoinColumn(name = "kundennummer")
+    //private Kunde kunde ;
 
 
     public Rechnung() {
     }
 
-    public Rechnung(long rechnungsnummer, LocalDate rechnungsdatum) {
+    public Rechnung(long rechnungsnummer, long kundennummer, LocalDate rechnungsdatum) {
         this.rechnungsnummer = rechnungsnummer;
+        this.kundennummer = kundennummer;
         this.rechnungsdatum = rechnungsdatum;
     }
 
-    public Rechnung(LocalDate rechnungsdatum) {
+    public Rechnung(long kundennummer, LocalDate rechnungsdatum) {
+        this.kundennummer = kundennummer;
         this.rechnungsdatum = rechnungsdatum;
     }
 
-    public Rechnung(long rechnungsnummer, LocalDate rechnungsdatum, List<Kauft> kauft) {
+    /*public Rechnung(long rechnungsnummer, long kundennummer, LocalDate rechnungsdatum, Kunde kunde) {
         this.rechnungsnummer = rechnungsnummer;
+        this.kundennummer = kundennummer;
         this.rechnungsdatum = rechnungsdatum;
-        this.kauft = kauft;
+        this.kunde = kunde;
     }
 
-    public Rechnung(LocalDate rechnungsdatum, List<Kauft> kauft) {
+    public Rechnung(long kundennummer, LocalDate rechnungsdatum, Kunde kunde) {
+        this.kundennummer = kundennummer;
         this.rechnungsdatum = rechnungsdatum;
-        this.kauft = kauft;
-    }
+        this.kunde = kunde;
+    }*/
 
     public long getRechnungsnummer() {
         return rechnungsnummer;
+    }
+
+    public long getKundennummer() {
+        return kundennummer;
+    }
+
+    public void setKundennummer(long kundennummer) {
+        this.kundennummer = kundennummer;
     }
 
     public void setRechnungsnummer(long rechnungsnummer) {
@@ -62,20 +79,23 @@ public class Rechnung {
         this.rechnungsdatum = rechnungsdatum;
     }
 
-    @JsonIgnore
-    public List<Kauft> getKauft() {
-        return kauft;
-    }
+    //@JsonBackReference
+    //public Kunde getKunde() {
+    //    return kunde;
+    //}
 
-    public void setKauft(List<Kauft> kauft) {
-        this.kauft = kauft;
-    }
+    //public void setKunde(Kunde kunde) {
+    //    this.kunde = kunde;
+    //}
 
-    @Override
-    public String toString() {
-        return "Rechnung{" +
-                "Rechnungsnummer=" + rechnungsnummer +
-                ", Rechnungsdatum=" + rechnungsdatum +
-                '}';
-    }
+    //@JsonIgnore
+    //public List<Kauft> getKauft() {
+    //    return kauft;
+    //}
+
+    //public void setKauft(List<Kauft> kauft) {
+    //    this.kauft = kauft;
+    //}
+
+
 }

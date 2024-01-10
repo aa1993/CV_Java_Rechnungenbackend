@@ -11,23 +11,24 @@ import java.util.List;
 public class Kunde {
     @Id
  //   @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "Kundennummer", unique = true, nullable = false)
+    @Column(name = "kundennummer", unique = true, nullable = false)
     private long kundennummer;
-    @Column(name = "Vorname", nullable = false)
+    @Column(name = "vorname", nullable = false)
     private String vorname;
-    @Column(name = "Nachname",nullable = false)
+    @Column(name = "nachname",nullable = false)
     private String nachname;
-    @Column(name = "Strasse", nullable = false)
+    @Column(name = "strasse", nullable = false)
     private String strasse;
-    @Column(name = "Hausnummer", nullable = false)
+    @Column(name = "hausnummer", nullable = false)
     private int hausnummer;
-    @Column(name = "PLZ", nullable = false)
-    private int pLZ;
-    @Column(name = "Ort", nullable = false)
+    @Column(name = "plz", nullable = false)
+    private int plz;
+    @Column(name = "ort", nullable = false)
     private String ort;
 
-    @OneToMany(mappedBy = "kunde") //mappedBy variablename in der Kauft Klasse
-    private List<Kauft> kauft;
+
+    //@OneToMany(mappedBy = "kunde") //mappedBy variablename in der Kauft Klasse
+    //private List<Rechnung> rechnungen;
 
     public Kunde() {
     }
@@ -38,7 +39,7 @@ public class Kunde {
         this.nachname = nachname;
         this.strasse = strasse;
         this.hausnummer = hausnummer;
-        this.pLZ = pLZ;
+        this.plz = pLZ;
         this.ort = ort;
     }
 
@@ -47,30 +48,11 @@ public class Kunde {
         this.nachname = nachname;
         this.strasse = strasse;
         this.hausnummer = hausnummer;
-        this.pLZ = pLZ;
+        this.plz = pLZ;
         this.ort = ort;
     }
 
-    public Kunde(long kundennummer, String vorname, String nachname, String strasse, int hausnummer, int pLZ, String ort, List<Kauft> kauft) {
-        this.kundennummer = kundennummer;
-        this.vorname = vorname;
-        this.nachname = nachname;
-        this.strasse = strasse;
-        this.hausnummer = hausnummer;
-        this.pLZ = pLZ;
-        this.ort = ort;
-        this.kauft = kauft;
-    }
 
-    public Kunde(String vorname, String nachname, String strasse, int hausnummer, int pLZ, String ort, List<Kauft> kauft) {
-        this.vorname = vorname;
-        this.nachname = nachname;
-        this.strasse = strasse;
-        this.hausnummer = hausnummer;
-        this.pLZ = pLZ;
-        this.ort = ort;
-        this.kauft = kauft;
-    }
 
     public long getKundennummer() {
         return kundennummer;
@@ -113,11 +95,11 @@ public class Kunde {
     }
 
     public int getPLZ() {
-        return pLZ;
+        return plz;
     }
 
     public void setPLZ(int pLZ) {
-        this.pLZ = pLZ;
+        this.plz = pLZ;
     }
 
     public String getOrt() {
@@ -128,14 +110,14 @@ public class Kunde {
         this.ort = ort;
     }
 
-    @JsonIgnore
-    public List<Kauft> getKauft() {
-        return kauft;
-    }
+    //@JsonIgnore
+    //public List<Kauft> getKauft() {
+    //    return kauft;
+    //}
 
-    public void setKauft(List<Kauft> kauft) {
-        this.kauft = kauft;
-    }
+    //public void setKauft(List<Kauft> kauft) {
+    //    this.kauft = kauft;
+    //}
 
     @Override
     public String toString() {
@@ -145,7 +127,7 @@ public class Kunde {
                 ", nachname='" + nachname + '\'' +
                 ", strasse='" + strasse + '\'' +
                 ", hausnummer=" + hausnummer +
-                ", pLZ=" + pLZ +
+                ", pLZ=" + plz +
                 ", ort='" + ort + '\'' +
                 '}';
     }
