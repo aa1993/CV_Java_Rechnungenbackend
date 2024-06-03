@@ -10,9 +10,9 @@ import java.util.List;
 @Table(name = "\"Kunde\"")
 public class Kunde {
     @Id
- //   @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "kundennummer", unique = true, nullable = false)
-    private long kundennummer;
+    private Long kundennummer;
     @Column(name = "vorname", nullable = false)
     private String vorname;
     @Column(name = "nachname",nullable = false)
@@ -20,9 +20,9 @@ public class Kunde {
     @Column(name = "strasse", nullable = false)
     private String strasse;
     @Column(name = "hausnummer", nullable = false)
-    private int hausnummer;
+    private Integer hausnummer;
     @Column(name = "plz", nullable = false)
-    private int plz;
+    private Integer plz;
     @Column(name = "ort", nullable = false)
     private String ort;
 
@@ -50,11 +50,11 @@ public class Kunde {
 
 
 
-    public long getKundennummer() {
+    public Long getKundennummer() {
         return kundennummer;
     }
 
-    public void setKundennummer(long kundennummer) {
+    public void setKundennummer(Long kundennummer) {
         this.kundennummer = kundennummer;
     }
 
@@ -82,19 +82,19 @@ public class Kunde {
         this.strasse = strasse;
     }
 
-    public int getHausnummer() {
+    public Integer getHausnummer() {
         return hausnummer;
     }
 
-    public void setHausnummer(int hausnummer) {
+    public void setHausnummer(Integer hausnummer) {
         this.hausnummer = hausnummer;
     }
 
-    public int getPLZ() {
+    public Integer getPLZ() {
         return plz;
     }
 
-    public void setPLZ(int pLZ) {
+    public void setPLZ(Integer pLZ) {
         this.plz = pLZ;
     }
 

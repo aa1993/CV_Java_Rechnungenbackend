@@ -1,15 +1,16 @@
 package de.Rechnungen.Rechnungenbackend.Service;
 
 import de.Rechnungen.Rechnungenbackend.Entity.Kunde;
-import de.Rechnungen.Rechnungenbackend.Entity.Rechnung;
-import de.Rechnungen.Rechnungenbackend.Repository.CustomQueryRepo;
 import de.Rechnungen.Rechnungenbackend.Repository.KundeRepository;
-import de.Rechnungen.Rechnungenbackend.Repository.RechnungRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import static org.springframework.http.HttpStatus.CONFLICT;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 public class KundeService {
@@ -30,16 +31,34 @@ public class KundeService {
         Optional<Kunde> kundeOptional = kundeRepository.findById( kundennummer);
         if(kundeOptional.isPresent())
             return kundeOptional.get();
-        throw new NoSuchElementException("Kein Kunde mit der Kundennummer " + kundennummer + " vorhanden!");
+        throw new ResponseStatusException(NOT_FOUND, "Kein Kunde mit der Kundennummer " + kundennummer + " vorhanden!");
     }
 
-    public void addKunde(Kunde kunde){
-        kundeRepository.save(kunde);
+    public Kunde addKunde(Kunde kunde){
+        if(kunde.getKundennummer()!= null && kundeRepository.findById(kunde.getKundennummer()).isPresent())
+            throw new ResponseStatusException(CONFLICT, "Kunde mit Kundennummmer " + kunde.getKundennummer()+" existiert bereits!");
+
+        return kundeRepository.save(kunde);
     }
 
     public void deleteKunde(long kundennummer) {
         if(kundeRepository.existsById(kundennummer))
             kundeRepository.deleteById(kundennummer);
-        else throw new NoSuchElementException("Kunde mit der Kundennummer "+ kundennummer+" ist nicht vorhanden.");
+        else throw new ResponseStatusException(NOT_FOUND, "Kunde mit der Kundennummer "+ kundennummer+" ist nicht vorhanden.");
+    }
+
+    public Kunde updateKundeById(long kundennummer, Kunde kunde){
+        Optional<Kunde> kundeOptional = kundeRepository.findById(kundennummer);
+        if(!kundeOptional.isPresent())
+            throw new ResponseStatusException(NOT_FOUND, "Kein Kunde mit der Kundennummer " + kundennummer + " vorhanden!");
+        Kunde internKunde = kundeOptional.get();
+        if(kunde.getHausnummer() != null) internKunde.setHausnummer(kunde.getHausnummer());
+        if(kunde.getPLZ() != null) internKunde.setPLZ(kunde.getPLZ());
+        if(kunde.getOrt() != null) internKunde.setOrt(kunde.getOrt());
+        if(kunde.getStrasse() != null) internKunde.setStrasse(kunde.getStrasse());
+        if(kunde.getVorname() != null) internKunde.setVorname(kunde.getVorname());
+        if(kunde.getNachname() != null) internKunde.setNachname(kunde.getNachname());
+        kundeRepository.save(internKunde);
+        return internKunde;
     }
 }

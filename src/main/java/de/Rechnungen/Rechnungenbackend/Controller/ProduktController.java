@@ -2,6 +2,7 @@ package de.Rechnungen.Rechnungenbackend.Controller;
 
 import de.Rechnungen.Rechnungenbackend.Entity.Produkt;
 import de.Rechnungen.Rechnungenbackend.Service.ProduktService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -33,4 +34,7 @@ public class ProduktController {
     public void deleteProduktById(@PathVariable("artikelnummer") long artikelnummer){
         produktService.deleteProduktById(artikelnummer);
     }
+
+//    @PutMapping(path = "{artikelnummer}")
+//    public
 }

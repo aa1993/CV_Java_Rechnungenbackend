@@ -3,10 +3,15 @@ package de.Rechnungen.Rechnungenbackend.Controller;
 import de.Rechnungen.Rechnungenbackend.Entity.Kunde;
 import de.Rechnungen.Rechnungenbackend.Service.KundeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
-@RequestMapping(path = "api/v1/kunde/")
+@RequestMapping(path = "api/v1/kunde")
 public class KundeController {
 
 private final KundeService kundeService;
@@ -27,13 +32,26 @@ private final KundeService kundeService;
     }
 
     @PostMapping
-    public void addKunde(@RequestBody Kunde kunde){
-        kundeService.addKunde(kunde);
+    public ResponseEntity<Kunde> addKunde(@RequestBody Kunde kunde){
+        Kunde kundeGefunden = kundeService.addKunde(kunde);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("{id}")
+                .buildAndExpand(kundeGefunden.getKundennummer())
+                .toUri();
+
+        return ResponseEntity.created(location).body(kundeGefunden);
     }
 
-
     @DeleteMapping(path = "{kundennummer}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteKunde(@PathVariable("kundennummer") long kundennummer){
         kundeService.deleteKunde(kundennummer);
     }
+
+    @PutMapping(path ="{kundennummer}")
+    public @ResponseBody Kunde setKundeById(@PathVariable("kundennummer") long kundennummer, @RequestBody Kunde kunde){
+        return kundeService.updateKundeById(kundennummer, kunde);
+    }
+
 }
