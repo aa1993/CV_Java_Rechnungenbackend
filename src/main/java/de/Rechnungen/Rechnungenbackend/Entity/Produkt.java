@@ -12,7 +12,7 @@ import java.util.List;
 public class Produkt {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "artikelnummer", unique = true, nullable = false)
     private Long artikelnummer;
     @Column(name = "produktname", nullable = false)

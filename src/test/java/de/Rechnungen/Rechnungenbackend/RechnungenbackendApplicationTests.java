@@ -49,7 +49,7 @@ class RechnungenbackendApplicationTests {
 
 	@Test
 	void testAddKunde() throws Exception{
-		mockMvc.perform(post("http://localhost:8080/api/v1/kunde/")
+		mockMvc.perform(post("http://localhost:8080/api/v1/kunden")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content("{\"vorname\": \"Michael\"," +
 								 "\"nachname\": \"Vagner\"," +
