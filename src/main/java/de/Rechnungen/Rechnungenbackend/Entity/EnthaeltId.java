@@ -10,32 +10,32 @@ import java.io.Serializable;
 public class EnthaeltId implements Serializable {
 
     @Column(name = "rechnungsnummer")
-    private long rechnungsnummer;
+    private Long rechnungsnummer;
 
     @Column(name = "artikelnummer")
-    private long artikelnummer;
+    private Long artikelnummer;
 
     public EnthaeltId() {
     }
 
-    public EnthaeltId(long rechnungsnummer, long artikelnummer) {
+    public EnthaeltId(Long rechnungsnummer, Long artikelnummer) {
         this.rechnungsnummer = rechnungsnummer;
         this.artikelnummer = artikelnummer;
     }
 
-    public long getRechnungsnummer() {
+    public Long getRechnungsnummer() {
         return rechnungsnummer;
     }
 
-    public void setRechnungsnummer(long rechnungsnummer) {
+    public void setRechnungsnummer(Long rechnungsnummer) {
         this.rechnungsnummer = rechnungsnummer;
     }
 
-    public long getArtikelnummer() {
+    public Long getArtikelnummer() {
         return artikelnummer;
     }
 
-    public void setArtikelnummer(long artikelnummer) {
+    public void setArtikelnummer(Long artikelnummer) {
         this.artikelnummer = artikelnummer;
     }
 }

@@ -11,17 +11,17 @@ public class Enthaelt {
     private EnthaeltId id;
 
     @Column(name = "anzahl", nullable = false)
-    private int anzahl;
+    private Integer anzahl;
 
     public Enthaelt() {
     }
 
-    public Enthaelt(EnthaeltId id, int anzahl) {
+    public Enthaelt(EnthaeltId id, Integer anzahl) {
         this.id = id;
         this.anzahl = anzahl;
     }
 
-    public Enthaelt(int anzahl) {
+    public Enthaelt(Integer anzahl) {
         this.anzahl = anzahl;
     }
     public EnthaeltId getId() {
@@ -32,14 +32,12 @@ public class Enthaelt {
         this.id = id;
     }
 
-    public int getAnzahl() {
+    public Integer getAnzahl() {
         return anzahl;
     }
 
-    public void setAnzahl(int anzahl) {
+    public void setAnzahl(Integer anzahl) {
         this.anzahl = anzahl;
     }
-
-
 
 }

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping(path = "api/v1/kunde")
+@RequestMapping(path = "api/v1/kunden")
 public class KundeController {
 
 private final KundeService kundeService;
@@ -26,7 +26,7 @@ private final KundeService kundeService;
         return kundeService.getKunden();
     }
 
-    @GetMapping(path = "{kundennummer}")
+    @GetMapping(path = "/{kundennummer}")
     public @ResponseBody Kunde getKundeById(@PathVariable("kundennummer") long kundennummer){
         return kundeService.getKundeById(kundennummer);
     }
@@ -36,20 +36,20 @@ private final KundeService kundeService;
         Kunde kundeGefunden = kundeService.addKunde(kunde);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("{id}")
+                .path("/{id}")
                 .buildAndExpand(kundeGefunden.getKundennummer())
                 .toUri();
 
         return ResponseEntity.created(location).body(kundeGefunden);
     }
 
-    @DeleteMapping(path = "{kundennummer}")
+    @DeleteMapping(path = "/{kundennummer}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteKunde(@PathVariable("kundennummer") long kundennummer){
         kundeService.deleteKunde(kundennummer);
     }
 
-    @PutMapping(path ="{kundennummer}")
+    @PutMapping(path ="/{kundennummer}")
     public @ResponseBody Kunde setKundeById(@PathVariable("kundennummer") long kundennummer, @RequestBody Kunde kunde){
         return kundeService.updateKundeById(kundennummer, kunde);
     }

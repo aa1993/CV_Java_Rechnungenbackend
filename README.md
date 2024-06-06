@@ -16,19 +16,26 @@ Durch die Erstellung dieses Demonstrationsprojekts konnte ich meine Kenntnisse u
 
 Das "Rechnungenbackend" dient als praktisches Beispiel für meine Fähigkeiten in der Entwicklung von Backend-Anwendungen mit Java und SpringBoot sowie meiner Fähigkeit, komplexe Datenbankstrukturen zu verwalten und effizienten Zugriff auf diese zu ermöglichen.
 
-| HTTP Anfragen   | Pfad                                     | Beschreibung                                                                                     |
-| :--------------:| :--------------------------------------- | :----------------------------------------------------------------------------------------------- |
-| GET             | /api/v1/kunde/                           | Liste von allen Kunden                                                                           |
-| GET             | /api/v1/kunde/{kundennummer}             | Kunden mit der Kundennummer kundennummer                                                         |
-| POST            | /api/v1/kunde/                           | füge neuen Kunden hinzu                                                                          |
-| DELETE          | /api/v1/kunde/{kundennummer}             | lösche den Kunden mit der Kundennummer kundennummer                                              |
-| GET             | /api/v1/produkt/                         | Liste von allen Produkten                                                                        |
-| GET             | /api/v1/produkt/{artikelnummer}          | Produkt mit der Artikelnummer artikelnummer                                                      |
-| POST            | /api/v1/produkt/                         | füge neues Produkt hinzu                                                                         |
-| DELETE          | /api/v1/produkt/{artikelnummer}          | lösche das Produkt mit der Artikelnummer artikelnummer                                           |
-| GET             | /api/v1/rechnung/                        | Liste von allen Rechnungen                                                                       |
-| GET             | /api/v1/rechnung/{rechnungsnummer}       | Rechnung mit der Rechnungsnummer rechnungsnummer                                                 |
-| POST            | /api/v1/rechnung/                        | füge neue Rechnung hinzu                                                                         |
-| DELETE          | /api/v1/rechnung/{rechnungsnummer}       | lösche die Rechnung mit der Rechnungsnummer rechnungsnummer                                      |
-| GET             | /api/v1/rechnungsliste/{rechnunsgnummer} | Liste von allen Produkten mit Einkaufsanzahl der Rechnung mit Rechnungsnummer rechnungsnummmer   |
-| GET             | /api/v1/totalpreis/{rechnungsnummer}     | Gesamtpreis der Rechnungen mit der Rechnungsnummer rechnungsnummer                               |
+| HTTP Anfragen | Pfad                                                       | Beschreibung                                                                                                            |
+|:-------------:|:-----------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|
+|      GET      | /api/v1/kunden                                             | Liste von allen Kunden                                                                                                  |
+|      GET      | /api/v1/kunden/{kundennummer}                              | Kunden mit der Kundennummer kundennummer                                                                                |
+|     POST      | /api/v1/kunden                                             | füge neuen Kunden hinzu                                                                                                 |
+|    DELETE     | /api/v1/kunden/{kundennummer}                              | lösche den Kunden mit der Kundennummer kundennummer                                                                     |
+|      PUT      | /api/v1/kunden/{kundennummer}                              | ändert den Kunden mit der Kundennummer kundennummer                                                                     |
+|      GET      | /api/v1/produkt                                            | Liste von allen Produkten                                                                                               |
+|      GET      | /api/v1/produkt/{artikelnummer}                            | Produkt mit der Artikelnummer artikelnummer                                                                             |
+|     POST      | /api/v1/produkt                                            | füge neues Produkt hinzu                                                                                                |
+|    DELETE     | /api/v1/produkt/{artikelnummer}                            | lösche das Produkt mit der Artikelnummer artikelnummer                                                                  |
+|      PUT      | /api/v1/produkt/{artikelnummer}                            | ändert das Produkt mit der Artikelnummer artikelnummer                                                                  |
+|      GET      | /api/v1/rechnungen                                         | Liste von allen Rechnungen                                                                                              |
+|      GET      | /api/v1/rechnungen/{rechnungsnummer}                       | Rechnung mit der Rechnungsnummer rechnungsnummer                                                                        |
+|     POST      | /api/v1/rechnungen                                         | füge neue Rechnung hinzu                                                                                                |
+|    DELETE     | /api/v1/rechnungen/{rechnungsnummer}                       | lösche die Rechnung mit der Rechnungsnummer rechnungsnummer                                                             |
+|      PUT      | /api/v1/rechnungen/{rechnungsnummer}                       | ändert die Rechnung mit der Rechnungsnummer rechnungsnummer                                                             |
+|      GET      | /api/v1/rechnungen/{rechnungsnummer}/liste                 | Liste von aller Rechnungseinträge der Rechnung mit der Rechnungsnummer rechnungsnummer                                  |
+|      GET      | /api/v1/rechnungen/{rechnungsnummer}/liste/{artikelnummer} | Rechnungseinträge der Rechnung mit der Rechnungsnummer rechnungsnummer                                                  |
+|     POST      | /api/v1/rechnungen/{rechnungsnummer}/liste                 | füge neue Rechnungseintrag in die Rechnung mit der Rechnungsnummer rechnungsnummer hinzu                                |
+|    DELETE     | /api/v1/rechnungen/{rechnungsnummer}/liste/{artikelnummer} | lösche den Rechnungseintrag mit der Artikelnummer artikelnummer in die Rechnung mit der Rechnungsnummer rechnungsnummer |
+|      PUT      | /api/v1/rechnungen/{rechnungsnummer}/liste/{artikelnummer} | ändere den Rechnungseintrag mit der Artikelnummer artikelnummer in die Rechnung mit der Rechnungsnummer rechnungsnummer |
+|      GET      | /api/v1/rechnungen/{rechnungsnummer}/gesamtpreis           | Gesamtpreis der Rechnungen mit der Rechnungsnummer rechnungsnummer                                                      |

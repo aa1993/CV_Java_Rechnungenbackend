@@ -15,9 +15,9 @@ public class Rechnung {
     @Id
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "Rechnungsnummer", unique = true, nullable = false)
-    private long rechnungsnummer;
+    private Long rechnungsnummer;
     @Column(name = "kundennummer", nullable = false)
-    private long kundennummer;
+    private Long kundennummer;
 
     @Column(name = "Rechnungsdatum", nullable = false)
 
@@ -26,30 +26,30 @@ public class Rechnung {
     public Rechnung() {
     }
 
-    public Rechnung(long rechnungsnummer, long kundennummer, LocalDate rechnungsdatum) {
+    public Rechnung(Long rechnungsnummer, Long kundennummer, LocalDate rechnungsdatum) {
         this.rechnungsnummer = rechnungsnummer;
         this.kundennummer = kundennummer;
         this.rechnungsdatum = rechnungsdatum;
     }
 
-    public Rechnung(long kundennummer, LocalDate rechnungsdatum) {
+    public Rechnung(Long kundennummer, LocalDate rechnungsdatum) {
         this.kundennummer = kundennummer;
         this.rechnungsdatum = rechnungsdatum;
     }
 
-    public long getRechnungsnummer() {
+    public Long getRechnungsnummer() {
         return rechnungsnummer;
     }
 
-    public long getKundennummer() {
+    public Long getKundennummer() {
         return kundennummer;
     }
 
-    public void setKundennummer(long kundennummer) {
+    public void setKundennummer(Long kundennummer) {
         this.kundennummer = kundennummer;
     }
 
-    public void setRechnungsnummer(long rechnungsnummer) {
+    public void setRechnungsnummer(Long rechnungsnummer) {
         this.rechnungsnummer = rechnungsnummer;
     }
 

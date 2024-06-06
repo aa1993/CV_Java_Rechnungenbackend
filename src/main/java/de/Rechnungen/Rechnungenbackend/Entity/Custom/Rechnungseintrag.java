@@ -1,9 +1,9 @@
 package de.Rechnungen.Rechnungenbackend.Entity.Custom;
 
 public interface Rechnungseintrag {
-    long getArtikelnummer();
+    Long getArtikelnummer();
     String getProduktname();
-    double getPreis();
-    int getAnzahl();
-    double getGesamtpreis();
+    Double getPreis();
+    Integer getAnzahl();
+    Double getGesamtpreis();
 }

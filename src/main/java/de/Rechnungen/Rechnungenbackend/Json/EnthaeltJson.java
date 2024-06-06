@@ -2,41 +2,41 @@ package de.Rechnungen.Rechnungenbackend.Json;
 
 public class EnthaeltJson {
 
-    private long rechnungsnummer;
-    private long artikelnummer;
+    private Long rechnungsnummer;
+    private Long artikelnummer;
 
-    private int anzahl;
+    private Integer anzahl;
 
     public EnthaeltJson() {
     }
 
-    public EnthaeltJson(long rechnungsnummer, long artikelnummer, int anzahl) {
+    public EnthaeltJson(Long rechnungsnummer, Long artikelnummer, Integer anzahl) {
         this.rechnungsnummer = rechnungsnummer;
         this.artikelnummer = artikelnummer;
         this.anzahl = anzahl;
     }
 
-    public long getRechnungsnummer() {
+    public Long getRechnungsnummer() {
         return rechnungsnummer;
     }
 
-    public void setRechnungsnummer(long rechnungsnummer) {
+    public void setRechnungsnummer(Long rechnungsnummer) {
         this.rechnungsnummer = rechnungsnummer;
     }
 
-    public long getArtikelnummer() {
+    public Long getArtikelnummer() {
         return artikelnummer;
     }
 
-    public void setArtikelnummer(long artikelnummer) {
+    public void setArtikelnummer(Long artikelnummer) {
         this.artikelnummer = artikelnummer;
     }
 
-    public int getAnzahl() {
+    public Integer getAnzahl() {
         return anzahl;
     }
 
-    public void setAnzahl(int anzahl) {
+    public void setAnzahl(Integer anzahl) {
         this.anzahl = anzahl;
     }
 

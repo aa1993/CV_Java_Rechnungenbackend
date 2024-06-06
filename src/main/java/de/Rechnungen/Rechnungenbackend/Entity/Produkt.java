@@ -14,32 +14,32 @@ public class Produkt {
     @Id
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "artikelnummer", unique = true, nullable = false)
-    private long artikelnummer;
+    private Long artikelnummer;
     @Column(name = "produktname", nullable = false)
     private String produktname;
     @Column(name = "preis", nullable = false)
-    private double preis;
+    private Double preis;
 
     public Produkt() {
     }
 
-    public Produkt(long artikelnummer, String produktname, double preis) {
+    public Produkt(Long artikelnummer, String produktname, Double preis) {
         artikelnummer = artikelnummer;
         produktname = produktname;
         preis = preis;
     }
 
-    public Produkt(String produktname, double preis) {
+    public Produkt(String produktname, Double preis) {
         this.produktname = produktname;
         this.preis = preis;
     }
 
 
-    public long getArtikelnummer() {
+    public Long getArtikelnummer() {
         return artikelnummer;
     }
 
-    public void setArtikelnummer(long artikelnummer) {
+    public void setArtikelnummer(Long artikelnummer) {
         this.artikelnummer = artikelnummer;
     }
 
@@ -51,11 +51,11 @@ public class Produkt {
         this.produktname = produktname;
     }
 
-    public double getPreis() {
+    public Double getPreis() {
         return preis;
     }
 
-    public void setPreis(double preis) {
+    public void setPreis(Double preis) {
         this.preis = preis;
     }
 
