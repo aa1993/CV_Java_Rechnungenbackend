@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    networks:
+      - employee-mysql
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql/Rechnungen
+      SPRING_DATASOURCE_USERNAME: springuser
+      SPRING_DATASOURCE_PASSWORD: test123
+    ports:
+      - "8080:8080"
+    networks:
+      - employee-mysql
+    depends_on:
+      - mysql
+
+networks:
+  employee-mysql: 
+volumes:
+  mysql-data:
