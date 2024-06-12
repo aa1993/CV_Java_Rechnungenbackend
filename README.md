@@ -13,6 +13,9 @@ Durch die Erstellung dieses Demonstrationsprojekts konnte ich meine Kenntnisse u
 3. Modellierung und Verwaltung von Datenbankrelationen.
 4. Entwicklung von Endpunkten zur Datenmanipulation und -abfrage.
 5. Umgang mit Fehlerbehandlung und Statusmeldungen
+6. Erstellen von Dockerfile und docker-compose Dateien
+7. Multi-stages Building mit Docker
+8. Verwaltung von mehreren Docker Images 
 
 Das "Rechnungenbackend" dient als praktisches Beispiel für meine Fähigkeiten in der Entwicklung von Backend-Anwendungen mit Java und SpringBoot sowie meiner Fähigkeit, komplexe Datenbankstrukturen zu verwalten und effizienten Zugriff auf diese zu ermöglichen.
 
@@ -39,3 +42,25 @@ Das "Rechnungenbackend" dient als praktisches Beispiel für meine Fähigkeiten i
 |    DELETE     | /api/v1/rechnungen/{rechnungsnummer}/liste/{artikelnummer} | lösche den Rechnungseintrag mit der Artikelnummer artikelnummer in die Rechnung mit der Rechnungsnummer rechnungsnummer |
 |      PUT      | /api/v1/rechnungen/{rechnungsnummer}/liste/{artikelnummer} | ändere den Rechnungseintrag mit der Artikelnummer artikelnummer in die Rechnung mit der Rechnungsnummer rechnungsnummer |
 |      GET      | /api/v1/rechnungen/{rechnungsnummer}/gesamtpreis           | Gesamtpreis der Rechnungen mit der Rechnungsnummer rechnungsnummer                                                      |
+
+## Anwendung starten
+Um die Anwendung zu kompilieren und zu starten, führen Sie einfach den folgenden Befehl aus:
+
+``` sh
+docker-compose up --build
+```
+
+Dieser Befehl baut die Docker-Images und startet alle definierten Container im docker-compose.yml-File.
+
+## Voraussetzungen
+Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
+
+- Docker ist installiert und läuft.
+- Docker Compose ist installiert.
+
+## Zusätzliche Hinweise
+- Verwenden Sie **'docker-compose down'**, um die Container zu stoppen und zu entfernen, wenn Sie die Anwendung nicht mehr benötigen.
+- Um die Anwendung ohne erneutes Bauen der Images zu starten, können Sie den Befehl ohne --build ausführen:
+``` sh
+docker-compose up
+```
