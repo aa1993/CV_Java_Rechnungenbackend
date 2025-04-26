@@ -10,6 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "api/v1/kunden")
 public class KundeController {
@@ -23,7 +24,16 @@ private final KundeService kundeService;
 
     @GetMapping
     public @ResponseBody Iterable<Kunde> getKunden(){
-        return kundeService.getKunden();
+        Iterable<Kunde> iter = kundeService.getKunden();
+        for(Kunde k : iter){
+            k.setOrt(k.getOrt().replace("Ã¶", "ö")
+                    .replace("Ã¤", "ä")
+                    .replace("Ã¼", "ü")
+                    .replace("ÃŸ", "ß"));
+            System.out.println(k.toString());
+
+        }
+        return iter;
     }
 
     @GetMapping(path = "/{kundennummer}")

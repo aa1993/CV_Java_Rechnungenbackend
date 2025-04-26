@@ -23,7 +23,7 @@ public class Kunde {
     private Integer hausnummer;
     @Column(name = "plz", nullable = false)
     private Integer plz;
-    @Column(name = "ort", nullable = false)
+    @Column(name = "ort", nullable = false, columnDefinition="char(40) collate utf8mb4_unicode_ci")
     private String ort;
 
     public Kunde() {

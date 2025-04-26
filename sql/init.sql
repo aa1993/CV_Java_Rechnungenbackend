@@ -1,6 +1,7 @@
-GRANT ALL PRIVILEGES ON *.* TO 'springuser';
+# GRANT ALL PRIVILEGES ON *.* TO 'springuser';
 
 CREATE DATABASE IF NOT EXISTS Rechnungen;
+ALTER DATABASE Rechnungen CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER IF NOT EXISTS 'springuser'@'%' IDENTIFIED BY 'test123';
 GRANT ALL PRIVILEGES ON Rechnungen.* TO 'springuser'@'%';
 FLUSH PRIVILEGES;
@@ -14,7 +15,7 @@ CREATE TABLE Kunde (
   strasse char(40) NOT NULL,
   hausnummer int(11) NOT NULL,
   plz int(11) NOT NULL,
-  ort char(40) NOT NULL,
+  ort char(40) NOT NULL CHARACTER SET utf8mb4,
   PRIMARY KEY (kundennummer)
 );
 
@@ -24,7 +25,7 @@ CREATE TABLE Rechnung (
   rechnungsdatum date NOT NULL,
   bezahlt ENUM('bezahlt', 'unbezahlt'),
   PRIMARY KEY (rechnungsnummer),
-  FOREIGN KEY (kundennummer) REFERENCES Kunde(kundennummer)
+  FOREIGN KEY (kundennummer) REFERENCES Kunde(kundennummer) ON DELETE CASCADE
 );
 
 CREATE TABLE Produkt(
@@ -41,8 +42,8 @@ CREATE TABLE enthaelt (
   PRIMARY KEY (rechnungsnummer,artikelnummer),
   KEY rechnungsnummer (rechnungsnummer),
   KEY artikelnummer (artikelnummer),
-  FOREIGN KEY (rechnungsnummer) REFERENCES Rechnung(rechnungsnummer),
-  FOREIGN KEY (artikelnummer) REFERENCES Produkt(artikelnummer)
+  FOREIGN KEY (rechnungsnummer) REFERENCES Rechnung(rechnungsnummer) ON DELETE CASCADE,
+  FOREIGN KEY (artikelnummer) REFERENCES Produkt(artikelnummer) ON DELETE CASCADE
 );
 
 
